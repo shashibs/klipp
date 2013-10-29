@@ -77,4 +77,7 @@ Klipp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  #update once DNS is working. 
+  config.action_mailer.default_url_options = { :host => 'http://klipp.herokuapp.com/' }
 end
