@@ -1,4 +1,6 @@
 Klipp::Application.routes.draw do
+  resources :notes
+
   devise_for :users
   get "pages/home"
   root "pages#home"
