@@ -8,12 +8,14 @@
       </div>
       <div class="panel-body">
         <p><%= @note.description %></p>
-        <p><strong><%= @note.user.email if @note.user %></strong></p>
+        <p><strong><%= @note.user.email if @note.user %></strong></p>	
         <% if @note.user == current_user %>
-         <%= link_to 'Edit', edit_note_path(@note) %>
+        	<%= link_to  edit_note_path(@note) do %>
+         		<span class="glyphicon glyphicon-edit"></span>
+        		Edit
+      		<% end %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-

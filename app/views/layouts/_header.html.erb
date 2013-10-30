@@ -16,7 +16,11 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",root_path%></li>
-        <li><%= link_to 'New Note', new_note_path %></li>
+        <li>
+          <%= link_to new_note_path do %>
+            <span class="glyphicon glyphicon-plus"></span> New Note
+          <% end %>
+        </li>
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
