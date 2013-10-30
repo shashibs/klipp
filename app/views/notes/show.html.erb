@@ -4,6 +4,7 @@
   <strong>Description:</strong>
   <%= @note.description %>
 </p>
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
+<% if @note.user == current_user %>
+	<%= link_to 'Edit', edit_note_path(@note) %> |
+<% end %>
 <%= link_to 'Back', notes_path %>

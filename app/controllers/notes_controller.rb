@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @notes = Note.all
@@ -12,7 +13,8 @@ class NotesController < ApplicationController
 
 
   def new
-    @note = Note.new
+   # @note = Note.new
+     @note = current_user.notes.build
   end
 
 
@@ -20,7 +22,8 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    #@note = Note.new(note_params)
+    @note = current_user.notes.build(note_params)
 
     respond_to do |format|
       if @note.save
@@ -52,6 +55,11 @@ class NotesController < ApplicationController
       format.html { redirect_to notes_url }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @note=current_user.notes.find_by(id: params[:id])
+    redirect_to notes_path, notice: "Not Authorised to edit this notes." if @note.nil?  
   end
 
   private
