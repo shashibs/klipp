@@ -2,14 +2,18 @@
 <div id="notes" class="transition-enabled">
   <% @notes.each do |note| %>
     <div class="box panel panel-default">
-      <%= image_tag note.image.url(:medium) if note.image? %>
+      <% if note.image? %>
+       
+        <%= link_to image_tag(note.image.url(:medium)), note %>
+      <% end %>
       <div class="panel-body">
-        <%= note.description %>
-        <%= note.user.email if note.user %>
-        <%= link_to 'Show', note %>
+        <%= note.description %><br/>
+        <strong><%= note.user.email if note.user %></strong>
         <% if note.user == current_user %>
-          <%= link_to 'Edit', edit_note_path(note) %>
-          <%= link_to 'Destroy', note, method: :delete %>
+          <div class="action" >
+            <%= link_to 'Edit', edit_note_path(note) %>
+            <%= link_to 'Destroy', note, method: :delete %>
+          </div>
         <% end %>
       </div>
     </div>

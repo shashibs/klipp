@@ -1,10 +1,19 @@
-<%= image_tag @note.image.url(:medium) if @note.image? %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @note.description %>
-</p>
-<% if @note.user == current_user %>
-	<%= link_to 'Edit', edit_note_path(@note) %> |
-<% end %>
 <%= link_to 'Back', notes_path %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <%= image_tag @note.image.url(:medium) if @note.image? %>
+      </div>
+      <div class="panel-body">
+        <p><%= @note.description %></p>
+        <p><strong><%= @note.user.email if @note.user %></strong></p>
+        <% if @note.user == current_user %>
+         <%= link_to 'Edit', edit_note_path(@note) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
