@@ -1,33 +1,20 @@
-<h1>Listing notes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image </th>
-      <th>Description</th>
-      <th>User </th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= image_tag note.image.url(:thumb) if note.image? %></td>
-        <td><%= note.description %></td>
-        <td><%= note.user.email if note.user %></td>
-        <td><%= link_to 'Show', note %></td>
+<div id="notes" class="transition-enabled">
+  <% @notes.each do |note| %>
+    <div class="box panel panel-default">
+      <%= image_tag note.image.url(:medium) if note.image? %>
+      <div class="panel-body">
+        <%= note.description %>
+        <%= note.user.email if note.user %>
+        <%= link_to 'Show', note %>
         <% if note.user == current_user %>
-        <td><%= link_to 'Edit', edit_note_path(note) %></td>
-        <td><%= link_to 'Destroy', note, method: :delete %></td>
+          <%= link_to 'Edit', edit_note_path(note) %>
+          <%= link_to 'Destroy', note, method: :delete %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<br>
 
-<%= link_to 'New Note', new_note_path %>
+
