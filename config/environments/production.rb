@@ -80,4 +80,14 @@ Klipp::Application.configure do
   
   #update once DNS is working. 
   config.action_mailer.default_url_options = { :host => 'http://klipp.herokuapp.com/' }
+
+  #Using PaperClip Save Images in Amazon S3 cloud for Heroku.
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
 end
