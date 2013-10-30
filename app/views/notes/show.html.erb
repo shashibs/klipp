@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= image_tag @note.image.url(:medium) if @note.image? %>
 
 <p>
   <strong>Description:</strong>
