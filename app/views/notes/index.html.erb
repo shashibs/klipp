@@ -9,7 +9,7 @@
         <% end %>
         <div class="panel-body">
           <%= note.description %><br/>
-          <strong><%= note.user.email if note.user %></strong>
+          <strong><%= note.user.name if note.user %></strong>
           <% if note.user == current_user %>
             <div class="action" >
               <%= link_to edit_note_path(note) do%>

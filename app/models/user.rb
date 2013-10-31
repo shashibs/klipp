@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :notes
+
+  validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 35 }
 end
