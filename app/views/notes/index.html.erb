@@ -1,28 +1,29 @@
 
-<div id="notes" class="transition-enabled">
-  <% @notes.each do |note| %>
-    <div class="box panel panel-default">
-      <% if note.image? %>
-       
-        <%= link_to image_tag(note.image.url(:medium)), note %>
-      <% end %>
-      <div class="panel-body">
-        <%= note.description %><br/>
-        <strong><%= note.user.email if note.user %></strong>
-        <% if note.user == current_user %>
-          <div class="action" >
-            <%= link_to edit_note_path(note) do%>
-              <span class="glyphicon glyphicon-edit"></span>
-            <% end %>
-            <%= link_to note, method: :delete do%>
-              <span class="glyphicon glyphicon-trash"></span>
-            <% end %>
-          </div>
+
+  <div id="notes" class="transition-enabled">
+    <% @notes.each do |note| %>
+      <div class="box panel panel-default">
+        <% if note.image? %>
+         
+          <%= link_to image_tag(note.image.url(:medium)), note %>
         <% end %>
+        <div class="panel-body">
+          <%= note.description %><br/>
+          <strong><%= note.user.email if note.user %></strong>
+          <% if note.user == current_user %>
+            <div class="action" >
+              <%= link_to edit_note_path(note) do%>
+                <span class="glyphicon glyphicon-edit"></span>
+              <% end %>
+              <%= link_to note, method: :delete do%>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 
 

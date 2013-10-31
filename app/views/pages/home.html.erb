@@ -1,3 +1,4 @@
+<% if !user_signed_in? %>
 <div class="jumbotron center">
      <h1>Welcome to Klipp!</h1>
      <% if user_signed_in? %>
@@ -8,3 +9,4 @@
 	  		</p>    
 	  	<%end %>
 </div>
+<% end %>

@@ -15,10 +15,14 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
 
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",root_path%></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Home",notes_path%></li>
+        <% end %>
         <li>
-          <%= link_to new_note_path do %>
-            <span class="glyphicon glyphicon-plus"></span> New Note
+          <% if user_signed_in? %>
+            <%= link_to new_note_path do %>
+              <span class="glyphicon glyphicon-plus"></span> New Note
+            <% end %>
           <% end %>
         </li>
         <% if user_signed_in? %>
