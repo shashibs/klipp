@@ -9,9 +9,9 @@
         <% end %>
         <div class="panel-body">
           <%= note.description %><br/>
-          
+          <%= image_tag note.user.avatar.url(:thumb), :class => "style_image" if note.user %>
           <strong><%= note.user.name if note.user %></strong>
-          <% if note.user != current_user %>
+          <% if note.user == current_user %>
             <div class="action" >
               <%= link_to edit_note_path(note) do%>
                 <span class="glyphicon glyphicon-edit"></span>
