@@ -9,7 +9,7 @@
         <% end %>
         <div class="panel-body">
           <%= note.description %><br/>
-          <%= image_tag note.user.avatar.url(:thumb), :class => "style_image" if note.user.avatar.url(:thumb)  %>
+          
           <strong><%= note.user.name if note.user %></strong>
           <% if note.user == current_user %>
             <div class="action" >
